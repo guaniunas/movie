@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瓜牛NAS | 影视/音乐资源汇总</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6a5acd;
+            --secondary: #9d50bb;
+            --accent: #7fffd4;
+            --dark: #0c0c2e;
+            --darker: #1a1a3e;
+            --light: #f0f0f0;
+            --card-bg: rgba(40, 40, 80, 0.7);
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0 3rem;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(106, 90, 205, 0.8);
+            animation: pulse 4s infinite;
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 20px rgba(106, 90, 205, 0.8);
+            }
+
+            50% {
+                transform: scale(1.05);
+                text-shadow: 0 0 30px rgba(106, 90, 205, 0.9), 0 0 40px rgba(106, 90, 205, 0.6);
+            }
+
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 20px rgba(106, 90, 205, 0.8);
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, var(--secondary), var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        /* 调整感谢卡片宽度，与下方卡片对齐 */
+        .thank-message {
+            width: 100%;
+            margin: 0 auto 4rem;
+            padding: 3rem;
+            background: rgba(30, 30, 60, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(106, 90, 205, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+        }
+
+        .thank-message:hover {
+            transform: translateY(-10px);
+        }
+
+        .thank-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+
+        .thank-text {
+            font-size: 1.4rem;
+            line-height: 1.9;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .register-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: rgba(40, 40, 80, 0.6);
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(106, 90, 205, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .register-section:hover::before {
+            left: 100%;
+        }
+
+        .register-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(106, 90, 205, 0.5);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .register-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(106, 90, 205, 0.7);
+        }
+
+        .register-btn:hover::before {
+            left: 0;
+        }
+
+        /* 卡片点阵式布局 - 每行三个，顶部对齐 */
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            margin: 4rem 0 2.5rem;
+            color: var(--accent);
+            position: relative;
+            padding-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 30%;
+            width: 40%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 3rem 0;
+            align-items: start;
+            /* 确保所有卡片顶部对齐 */
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(106, 90, 205, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 150px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            align-self: start;
+            /* 确保卡片顶部对齐 */
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(106, 90, 205, 0.1), rgba(157, 80, 187, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(106, 90, 205, 0.7);
+            background: rgba(50, 50, 100, 0.8);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            transition: width 0.4s ease;
+        }
+
+        .card:hover::after {
+            width: 100%;
+            opacity: 0.1;
+        }
+
+        .card-content {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.5;
+            z-index: 1;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .card:hover .card-content {
+            transform: scale(1.05);
+            color: var(--accent);
+        }
+
+        .card .icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--primary);
+            opacity: 0.7;
+            transition: all 0.4s ease;
+        }
+
+        .card:hover .icon {
+            opacity: 1;
+            transform: rotate(15deg) scale(1.2);
+            color: var(--accent);
+        }
+
+        .notice {
+            text-align: center;
+            margin: 4rem 0 2.5rem;
+            padding: 2.5rem;
+            background: rgba(30, 30, 60, 0.8);
+            border-radius: 15px;
+            font-size: 1rem;
+            color: #ccc;
+            border-top: 1px solid rgba(106, 90, 205, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notice::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: #999;
+            font-size: 1rem;
+            border-top: 1px solid rgba(106, 90, 205, 0.3);
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '♪';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            color: var(--primary);
+            background: var(--darker);
+            padding: 0 20px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            header {
+                padding: 3rem 0 2rem;
+            }
+
+            .logo {
+                font-size: 3.5rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .thank-message {
+                padding: 2rem;
+            }
+
+            .thank-text {
+                font-size: 1.2rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 2rem 1.5rem;
+                min-height: 130px;
+            }
+
+            .card-content {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 3rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 1.8rem 1.2rem;
+                min-height: 120px;
+            }
+        }
+
+        /* 粒子背景效果 */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* 浮动音符动画 */
+        .floating-notes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .note {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(106, 90, 205, 0.4);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.7;
+            }
+
+            90% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <div class="floating-notes" id="floatingNotes"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">♪</div>
+            <h1>瓜牛NAS | 影视/音乐资源汇总</h1>
+        </header>
+
+        <main>
+            <div class="thank-message">
+                <p class="thank-text">
+                    时光如水，我们因音符而聚，在旋律的河流中结伴同行。那些深藏在节拍里的悲欢，那些镌刻于和弦中的岁月，皆因有你们的倾听而被赋予意义。这曲未竟的交响诗，因你们的同在，才始终有星光引路，有回响相随。感恩这长久的陪伴，愿我们继续在寂静与喧响之间，以心倾听彼此。
+                </p>
+            </div>
+
+            <div class="register-section">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;">更多无损音乐请注册城通网盘</p>
+                <a href="https://www.ctfile.com/register?u=167219" class="register-btn">立即注册</a>
+                <p style="margin-top: 1rem;">加入城通社区5941T小组，小组密码：LMZL630453</p>
+                <p>如果下载限速，可购买会员提速下载</p>
+            </div>
+
+            <h2 class="section-title">高分影视剧（电影/电视剧）</h2>
+            <div class="cards-grid">
+                <a href="https://url19.ctfile.com/d/167219-4321919-340be3?p=630453" class="card">
+                    <div class="card-content">【华语电影】</div>
+                    <div class="icon"><i class="fas fa-compact-disc"></i></div>
+                </a>
+                <a href="https://url19.ctfile.com/d/167219-4538322-750e7e?p=630453" class="card">
+                    <div class="card-content">【华语电视剧】</div>
+                    <div class="icon"><i class="fas fa-film"></i></div>
+                </a>
+                <a href="https://url19.ctfile.com/d/167219-6509234-c251ed?p=630453" class="card">
+                    <div class="card-content">【英语电影】</div>
+                    <div class="icon"><i class="fas fa-book-open"></i></div>
+                </a>
+                <a href="https://url19.ctfile.com/d/167219-6517344-bf7d7b?p=630453" class="card">
+                    <div class="card-content">【英语电视剧】</div>
+                    <div class="icon"><i class="fas fa-theater-masks"></i></div>
+                </a>
+                <a href="https://url19.ctfile.com/d/167219-11440785-caa868?p=630453" class="card">
+                    <div class="card-content">【日韩电影】</div>
+                    <div class="icon"><i class="fas fa-file-pdf"></i></div>
+                </a>
+                <a href="https://url19.ctfile.com/d/167219-14589573-725bb4?p=630453" class="card">
+                    <div class="card-content">【日韩影视剧】</div>
+                    <div class="icon"><i class="fas fa-images"></i></div>
+                </a>
+                <a href="https://url19.ctfile.com/d/167219-28826277-be508b?p=630453" class="card">
+                    <div class="card-content">【印度电影】</div>
+                    <div class="icon"><i class="fas fa-music"></i></div>
+                </a>
+                <a href="https://url19.ctfile.com/d/167219-39822669-675518?p=630453" class="card">
+                    <div class="card-content">【其他电影】</div>
+                    <div class="icon"><i class="fas fa-laptop-code"></i></div>
+                </a>
+                <a href="https://url19.ctfile.com/d/167219-43561926-980967?p=630453" class="card">
+                    <div class="card-content">【其他电视剧】</div>
+                    <div class="icon"><i class="fas fa-palette"></i></div>
+                </a>
+            </div>
+
+            <h2 class="section-title">系列电影(更新中)</h2>
+            <div class="cards-grid">
+                <a href="https://url92.ctfile.com/d/4505692-66675907-84e0d2?p=630453" class="card">
+                    <div class="card-content">宫崎骏系列</div>
+                    <div class="icon"><i class="fas fa-headphones"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-62299297-e3df74?p=630453" class="card">
+                    <div class="card-content">变形金刚系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-62314261-641a65?p=630453" class="card">
+                    <div class="card-content">007系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-46608356-ddea9b?p=630453" class="card">
+                    <div class="card-content">冰川时代系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-52272564-3dcfcf?p=630453" class="card">
+                    <div class="card-content">冰雪奇缘系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-59391283-767919?p=630453" class="card">
+                    <div class="card-content">夺宝奇兵系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-156881563-41127e?p=630453" class="card">
+                    <div class="card-content">电锯惊魂系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-156881564-06e583?p=630453" class="card">
+                    <div class="card-content">第一滴血系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-64735786-100469?p=630453" class="card">
+                    <div class="card-content">刀锋战士系列</div>
+                    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-65974489-4227c5?p=630453" class="card">
+                    <div class="card-content">毒液系列</div>
+                    <div class="icon"><i class="fas fa-car"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-54423816-094868?p=630453" class="card">
+                    <div class="card-content">谍影重重系列</div>
+                    <div class="icon"><i class="fas fa-microphone-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-63270736-233a17?p=630453" class="card">
+                    <div class="card-content">碟中谍系列</div>
+                    <div class="icon"><i class="fas fa-file-audio"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-65291719-1fce9b?p=630453" class="card">
+                    <div class="card-content">暮光之城系列</div>
+                    <div class="icon"><i class="fas fa-cogs"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-66675907-84e0d2?p=630453" class="card">
+                    <div class="card-content">速度与激情系列</div>
+                    <div class="icon"><i class="fas fa-headphones"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-62299297-e3df74?p=630453" class="card">
+                    <div class="card-content">古墓丽影系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-62314261-641a65?p=630453" class="card">
+                    <div class="card-content">钢铁侠系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-46608356-ddea9b?p=630453" class="card">
+                    <div class="card-content">敢死队系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-52272564-3dcfcf?p=630453" class="card">
+                    <div class="card-content">霍比特人系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-59391283-767919?p=630453" class="card">
+                    <div class="card-content">虎胆龙威系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-156881563-41127e?p=630453" class="card">
+                    <div class="card-content">回到未来系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-156881564-06e583?p=630453" class="card">
+                    <div class="card-content">蝴蝶效应系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-64735786-100469?p=630453" class="card">
+                    <div class="card-content">黑客帝国系列</div>
+                    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-65974489-4227c5?p=630453" class="card">
+                    <div class="card-content">黑夜传说系列</div>
+                    <div class="icon"><i class="fas fa-car"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-54423816-094868?p=630453" class="card">
+                    <div class="card-content">火线追凶系列</div>
+                    <div class="icon"><i class="fas fa-microphone-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-63270736-233a17?p=630453" class="card">
+                    <div class="card-content">黑衣人系列</div>
+                    <div class="icon"><i class="fas fa-file-audio"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-65291719-1fce9b?p=630453" class="card">
+                    <div class="card-content">尖峰时刻系列</div>
+                    <div class="icon"><i class="fas fa-cogs"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-156881563-41127e?p=630453" class="card">
+                    <div class="card-content">饥饿游戏系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-156881564-06e583?p=630453" class="card">
+                    <div class="card-content">教父系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-64735786-100469?p=630453" class="card">
+                    <div class="card-content">飓风营救系列</div>
+                    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-65974489-4227c5?p=630453" class="card">
+                    <div class="card-content">警察故事系列</div>
+                    <div class="icon"><i class="fas fa-car"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-64735786-100469?p=630453" class="card">
+                    <div class="card-content">惊声尖笑系列</div>
+                    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-65974489-4227c5?p=630453" class="card">
+                    <div class="card-content">金蝉脱壳系列</div>
+                    <div class="icon"><i class="fas fa-car"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-54423816-094868?p=630453" class="card">
+                    <div class="card-content">雷神系列</div>
+                    <div class="icon"><i class="fas fa-microphone-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-63270736-233a17?p=630453" class="card">
+                    <div class="card-content">美国派系列</div>
+                    <div class="icon"><i class="fas fa-file-audio"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-65291719-1fce9b?p=630453" class="card">
+                    <div class="card-content">魔女系列</div>
+                    <div class="icon"><i class="fas fa-cogs"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-156881563-41127e?p=630453" class="card">
+                    <div class="card-content">潜伏系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-156881564-06e583?p=630453" class="card">
+                    <div class="card-content">教父系列</div>
+                    <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-64735786-100469?p=630453" class="card">
+                    <div class="card-content">飓风营救系列</div>
+                    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                </a>
+                <a href="https://url92.ctfile.com/d/4505692-65974489-4227c5?p=630453" class="card">
+                    <div class="card-content">警察故事系列</div>
+                    <div class="icon"><i class="fas fa-car"></i></div>
+                </a>
+            </div>
+
+            <div class="notice">
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">30T资源免费分享，如遇压缩包无法解压，请尝试修复，已添加恢复记录，请多多支持！</p>
+                <p>所有资源均来自于互联网，只可用於個人試聽交流使用，禁用於任何商業用途或公開傳播的場合，請在試聽後24小時內刪除,本人不承擔與之相關的一切法律責任.如您喜歡，請購買正版專輯！</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>感谢音乐烧友和粉丝多年来的陪伴与追随 | 音乐时光</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // 粒子背景配置
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 800 } },
+                color: { value: "#6a5acd" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#9d50bb",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            }
+        });
+
+        // 创建浮动音符
+        function createFloatingNotes() {
+            const container = document.getElementById('floatingNotes');
+            const notes = ['♪', '♫', '♬', '🎵', '🎶'];
+
+            for (let i = 0; i < 15; i++) {
+                const note = document.createElement('div');
+                note.className = 'note';
+                note.textContent = notes[Math.floor(Math.random() * notes.length)];
+                note.style.left = Math.random() * 100 + 'vw';
+                note.style.animationDelay = Math.random() * 15 + 's';
+                note.style.fontSize = (Math.random() * 1 + 1.5) + 'rem';
+                container.appendChild(note);
+            }
+        }
+
+        createFloatingNotes();
+    </script>
+</body>
+
+</html>
